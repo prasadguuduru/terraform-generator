@@ -1,0 +1,35 @@
+{
+  "name": "TerraformGenerator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "get": "cdktf get",
+    "build": "rimraf ./build && tsc --outDir ./build  && find ./build -name '*.ts' -delete",
+    "clean": "rimraf ./build",
+    "generate-terraform": "node ./build/src/generator.js ",
+    "compile": "tsc --pretty",
+    "watch": "tsc -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "upgrade": "npm i cdktf@latest cdktf-cli@latest",
+    "upgrade:next": "npm i cdktf@next cdktf-cli@next"
+  },
+  "engines": {
+    "node": ">=16.0"
+  },
+  "dependencies": {
+    "@cdktf/provider-aws": "^17.0.6",
+    "cdktf": "^0.18.0",
+    "constructs": "^10.2.70",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.2",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.6.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

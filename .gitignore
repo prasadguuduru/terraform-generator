@@ -1,0 +1,5 @@
+node_modules
+generated/aws/s3_bucket/*
+generated/aws/lambda/*
+!generated/aws/lambda/src/
+build/*
