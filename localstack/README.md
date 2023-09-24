@@ -1,0 +1,43 @@
+# terraform-generator
+Hackathon Project for generating terraform from resource def in a json
+
+Step 1:
+```
+export DOCKER_API_VERSION=1.43
+```
+
+Step 2:
+```
+docker network create  innovation-sprint
+```
+
+Step 3:
+```
+docker-compose up -d
+```
+
+Step 4:
+```
+
+docker-compose logs -f localstack
+```
+
+Step 5:
+Open another terminal and try to provision main.tf.json terraform
+```
+terraform init && terraform apply --auto-approve
+```
+
+Step 6:
+
+```
+aws apigateway get-rest-apis --region us-east-1 --endpoint-url http://localhost:4566
+```
+
+
+Step 7:
+Get associated api gateway code and try to render the endpoint
+
+```
+http://localhost:4566/restapis/<<APIGATEWAYCODE>>/test/_user_request_/sample
+```
