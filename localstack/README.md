@@ -1,5 +1,5 @@
-# terraform-generator
-Hackathon Project for generating terraform from resource def in a json
+# Localstack Spinup Steps
+Spinning up Local Stack Locally and provisioning sample infra
 
 Step 1:
 ```
