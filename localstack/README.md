@@ -7,7 +7,7 @@ export DOCKER_API_VERSION=1.43
 ```
 Step 2:
 ```
-export LOCALSTACK_API_KEY=77jinYX1gE
+export LOCALSTACK_API_KEY=XXXXXX
 ```
 
 Step 3:
