@@ -6,6 +6,8 @@ Step 1:
 export DOCKER_API_VERSION=1.43
 ```
 Step 2:
+Register with localstack and get api key. Its free and no need to input card details.
+Note: 
 ```
 export LOCALSTACK_API_KEY=XXXXXX
 ```
