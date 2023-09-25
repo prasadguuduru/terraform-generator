@@ -2,7 +2,7 @@ import terraformResource from '../source_resources/main.tf.json';
 import aws_s3_bucket from '../source_resources/aws_s3_bucket/resource.json';
 import aws_lambda from '../source_resources/lambda/resource.json';
 import Configuration from "./Configuration";
-class Generator {
+export default class Generator {
   private clonedObj: any;
   private resourceType: any;
 

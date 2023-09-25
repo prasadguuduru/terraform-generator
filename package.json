@@ -6,7 +6,7 @@
     "get": "cdktf get",
     "build": "rimraf ./build && tsc --outDir ./build  && find ./build -name '*.ts' -delete",
     "clean": "rimraf ./build",
-    "generate-terraform": "node ./build/src/generator.js ",
+    "generate-tf": "node ./build/src/main.js",
     "compile": "tsc --pretty",
     "watch": "tsc -w",
     "test": "jest",
