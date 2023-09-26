@@ -7,7 +7,7 @@
     "build": "rimraf ./build && tsc --outDir ./build  && find ./build -name '*.ts' -delete",
     "clean": "rimraf ./build",
     "generate-tf": "node ./build/src/main.js",
-    "read-image": "node ./build/src/arch-to-json/read.js",
+    "read-image": "path=./aws-workflow-without-lambda.jpg node ./build/src/arch-to-json/read.js",
     "compile": "tsc --pretty",
     "watch": "tsc -w",
     "test": "jest",

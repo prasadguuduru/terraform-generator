@@ -1,6 +1,7 @@
 # terraform-generator
 Hackathon Project for generating terraform from resource def in a json
 
+
 Step 1:
 ```
 yarn install && yarn build && yarn generate-tf
@@ -8,6 +9,9 @@ yarn install && yarn build && yarn generate-tf
 
 Step 2:
 ```
+export AWS_ACCESS_KEY_ID='test'
+export AWS_SECRET_ACCESS_KEY='test'
+AWS_DEFAULT_REGION='us-east-1'
 cd generated/aws/lambda
 terraform init && terraform apply --auto-approve
 ```

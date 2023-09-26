@@ -1,5 +1,7 @@
 import terraformResource from '../source_resources/main.tf.json';
+// @ts-ignore
 import aws_s3_bucket from '../source_resources/aws_s3_bucket/resource.json';
+// @ts-ignore
 import aws_lambda from '../source_resources/lambda/resource.json';
 import Configuration from "./Configuration";
 export default class Generator {
