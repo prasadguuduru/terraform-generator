@@ -77,7 +77,6 @@ runs:
         #localstack wait -t 30
         yarn install && yarn clean && yarn build && yarn read-image && yarn generate-tf &&  base_dir=$(pwd) && cd ${base_dir}/generated/aws/s3_bucket && terraform init && terraform apply  -auto-approve &&  cd ${base_dir}/generated/aws/lambda && terraform init && terraform apply  -auto-approve && cd ${base_dir}
         aws s3 ls  --endpoint-url http://s3.localhost.localstack.cloud:4566
-        eval "GIT DIFF!!!!!!!!"
         git status
         
       shell: bash
