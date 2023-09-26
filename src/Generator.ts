@@ -52,10 +52,3 @@ export default class Generator {
     }
   }
 }
-// For generating S3 Config:
-const s3Generator = new Generator('s3');
-s3Generator.generate();
-
-// For generating Lambda Config:
-const lambdaGenerator = new Generator('lambda');
-lambdaGenerator.generate();
