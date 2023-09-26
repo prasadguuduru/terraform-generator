@@ -1,5 +1,7 @@
 node_modules
 generated/aws/s3_bucket/*
+!generated/aws/s3_bucket/resource.tf.json
 generated/aws/lambda/*
 !generated/aws/lambda/src/
+!generated/aws/lambda/resource.tf.json
 build/*

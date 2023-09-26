@@ -1,4 +1,5 @@
-import generateTerraformMappings from '../source_resources/generate.json';
+// @ts-ignore
+import generateTerraformMappings from '../../source_resources/generate.json';
 import Generator from "./Generator";
 const methods: { [key: string]: () => void } = {
     s3: () => {
@@ -15,6 +16,9 @@ const methods: { [key: string]: () => void } = {
         const lambdaGenerator = new Generator('lambda');
         lambdaGenerator.generate();
     },
+    apigateway: () => {
+        console.log('apigateway is invoked.');
+    },
 };
 
 async function main() {
@@ -27,11 +31,12 @@ async function main() {
             if (jsonData.hasOwnProperty(key)) {
                 const methodName = jsonData[key];
                 const method = methods[methodName];
+                console.log(`HELLO ${methodName} for resource: ${key}`);
                 if (method) {
                     console.log(`Invoking ${methodName} for resource: ${key}`);
                     method();
                 } else {
-                    console.error(`Method not found for resource: ${key}`);
+                    console.error(`Method not found for resource: ${methodName}`);
                 }
             }
         }
