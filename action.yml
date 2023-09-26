@@ -1,0 +1,84 @@
+name: 'Setup LocalStack'
+description: 'Sets up LocalStack CLI in your GitHub Actions workflow.'
+author: 'LocalStack Team'
+
+branding:
+  icon: 'code'
+  color: 'white'
+
+inputs:
+  image-tag:
+    description: 'Tag of the LocalStack Docker image to use'
+    required: true
+    default: 'latest'
+  install-awslocal:
+    description: 'Whether to install the `awslocal` CLI into the environment'
+    required: true
+    default: 'true'
+  use-pro:
+    description: 'Whether to use LocalStack Pro (requires a valid API key)'
+    required: false
+    default: 'false'
+  configuration:
+    description: 'Configuration variables to use for LocalStack'
+    required: false
+    default: ''
+  ci-project:
+    description: 'Name of the CI project to track in LocalStack Cloud'
+    required: false
+    default: ''
+  github-token:
+    description: 'Github token used to create PR comments'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Initial PR comment
+      # TODO: potentially replace with Action version number over time
+      uses: LocalStack/setup-localstack/prepare@main
+      if: inputs.ci-project && inputs.github-token
+      with:
+        github-token: ${{ inputs.github-token }}
+        ci-project: ${{ inputs.ci-project }}
+
+    - name: Start LocalStack
+      run: |
+        export DOCKER_API_VERSION=1.43
+        docker network create  innovation-sprint
+        
+        pip install pyopenssl -U
+
+        if [ "$USE_PRO" = true ]; then
+          
+          docker-compose up -d && CONFIGURATION="$CONFIGURATION DNS_ADDRESS=0"
+          
+          #docker-compose logs -f localstack
+          pwd
+          terraform init && terraform apply --auto-approve
+          
+        else
+          docker pull localstack/localstack:"$IMAGE_TAG" &
+        fi
+
+        pip install localstack
+        if [ "$INSTALL_AWSLOCAL" = true ]; then
+          pip install awscli-local[ver1]
+          export AWS_ACCESS_KEY_ID='test'
+          export AWS_SECRET_ACCESS_KEY='test'
+          AWS_DEFAULT_REGION='us-east-1'
+          aws s3 ls  --endpoint-url http://s3.localhost.localstack.cloud:4566
+        fi
+
+        export CI_PROJECT=${{ inputs.ci-project }}
+        #eval "${CONFIGURATION} localstack start -d"
+
+        #localstack wait -t 30
+
+      shell: bash
+      env:
+        IMAGE_TAG: "${{ inputs.image-tag }}"
+        INSTALL_AWSLOCAL: "${{ inputs.install-awslocal }}"
+        USE_PRO: "${{ inputs.use-pro }}"
+        CONFIGURATION: "${{ inputs.configuration }}"

@@ -1,0 +1,54 @@
+{
+    "provider": {
+        "aws": {
+            "region": "us-east-1",
+            "access_key": "test",
+            "secret_key": "test",
+            "skip_credentials_validation": true,
+            "skip_metadata_api_check": true,
+            "skip_requesting_account_id": true,
+            "endpoints": {
+                "dynamodb": "http://localhost:4566",
+                "s3": "http://s3.localhost.localstack.cloud:4566",
+                "sqs": "http://localhost:4566",
+                "sns": "http://localhost:4566",
+                "apigateway": "http://localhost:4566",
+                "iam": "http://localhost:4566",
+                "lambda": "http://localhost:4566",
+                "cloudwatchlogs": "http://localhost:4566"
+            }
+        }
+    },
+    "resource": {
+        "aws_s3_bucket": {
+            "example": {
+                "bucket": "my-tf-example-bucket"
+            }
+        },
+        "aws_s3_bucket_ownership_controls": {
+            "example": {
+                "bucket": "${aws_s3_bucket.example.id}",
+                "rule": [
+                    {
+                        "object_ownership": "BucketOwnerPreferred"
+                    }
+                ]
+            }
+        },
+        "aws_s3_bucket_public_access_block": {
+            "example": {
+                "bucket": "${aws_s3_bucket.example.id}",
+                "block_public_acls": false,
+                "block_public_policy": false,
+                "ignore_public_acls": false,
+                "restrict_public_buckets": false
+            }
+        },
+        "aws_s3_bucket_acl": {
+            "example": {
+                "bucket": "${aws_s3_bucket.example.id}",
+                "acl": "public-read"
+            }
+        }
+    }
+}
