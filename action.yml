@@ -75,16 +75,17 @@ runs:
         #eval "${CONFIGURATION} localstack start -d"
 
         #localstack wait -t 30
-        yarn install && yarn clean && yarn build && yarn read-image && yarn generate-tf &&  base_dir=$(pwd) && cd ${base_dir}/generated/aws/s3_bucket && terraform init && terraform apply  -auto-approve &&  cd ${base_dir}/generated/aws/lambda && terraform init && terraform apply  -auto-approve && cd ${base_dir}
-        aws s3 ls  --endpoint-url http://s3.localhost.localstack.cloud:4566
-        git status
+        #yarn install && yarn clean && yarn build && yarn read-image && yarn generate-tf &&  base_dir=$(pwd) && cd ${base_dir}/generated/aws/s3_bucket && terraform init && terraform apply  -auto-approve &&  cd ${base_dir}/generated/aws/lambda && terraform init && terraform apply  -auto-approve && cd ${base_dir}
+        #aws s3 ls  --endpoint-url http://s3.localhost.localstack.cloud:4566
+        
+        #git status
         date > generated.txt
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add .
-        git commit -m "generated" git push
-        touch README.md
+        #git config user.name github-actions
+        #git config user.email github-actions@github.com
+        #git add .
+        #git commit -m "generated" git push
         mkdir image && cd image
+        touch README.md
         cp ../generated/aws/s3_bucket/resource.tf.json ./
         find ../generated/ -type f ! -path 'generated/.git/*' -exec cp {} ./ \;
         ls -lrt
