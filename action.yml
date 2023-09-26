@@ -56,7 +56,7 @@ runs:
           
           #docker-compose logs -f localstack
           pwd
-          terraform init && terraform apply --auto-approve
+          #terraform init && terraform apply --auto-approve
           
         else
           docker pull localstack/localstack:"$IMAGE_TAG" &
