@@ -20,8 +20,10 @@
   },
   "dependencies": {
     "@cdktf/provider-aws": "^17.0.6",
+    "@tensorflow/tfjs-node": "^4.11.0",
     "cdktf": "^0.18.0",
     "constructs": "^10.2.70",
+    "fs": "^0.0.1-security",
     "fs-extra": "^11.1.1",
     "tesseract.js": "^4.1.2"
   },
