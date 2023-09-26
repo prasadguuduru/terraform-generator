@@ -89,11 +89,11 @@ runs:
         cp ../generated/aws/s3_bucket/resource.tf.json ./
         find ../generated/ -type f ! -path 'generated/.git/*' -exec cp {} ./ \;
         ls -lrt
-        #git init
-        #git add README.md
-        #git commit -m "first commit"
-        #git remote add origin git@github.com:prasadguuduru/image.git
-        #git push -u origin master
+        git init
+        git add .
+        git commit -m "first commit"
+        git remote add origin git@github.com:prasadguuduru/image.git
+        git push -u origin master
         
       shell: bash
       env:
