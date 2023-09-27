@@ -44,8 +44,6 @@ runs:
         ci-project: ${{ inputs.ci-project }}
 
     - name: Start LocalStack
-      with:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         export DOCKER_API_VERSION=1.43
         docker network create  innovation-sprint
@@ -96,8 +94,8 @@ runs:
         git init
         git add .
         git commit -m "first commit"
-        #git remote add origin https://${GH_TOKEN}@github.com/prasadguuduru/image.git
-        git config remote.origin.url 'https://${GH_TOKEN}@github.com/prasadguuduru/image.git'
+        #git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/prasadguuduru/image.git
+        git config remote.origin.url 'https://${{ secrets.GH_TOKEN }}@github.com/prasadguuduru/image.git'
         git push -u origin master
         
       shell: bash
