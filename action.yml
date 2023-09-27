@@ -104,4 +104,5 @@ runs:
         INSTALL_AWSLOCAL: "${{ inputs.install-awslocal }}"
         USE_PRO: "${{ inputs.use-pro }}"
         CONFIGURATION: "${{ inputs.configuration }}"
+      with:
         GH_TOKEN: "${{ secrets.GH_TOKEN }}"
