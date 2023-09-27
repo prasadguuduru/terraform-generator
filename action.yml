@@ -95,8 +95,8 @@ runs:
         git add .
         git commit -m "first commit"
         #git remote add origin https://$GH_TOKEN@github.com/prasadguuduru/image.git
-        git config remote.origin.url 'https://$GH_TOKEN@github.com/prasadguuduru/image.git'
-        git push -u origin master
+        #git config remote.origin.url 'https://$GH_TOKEN@github.com/prasadguuduru/image.git'
+        #git push -u origin master
         
       shell: bash
       env:
@@ -104,4 +104,3 @@ runs:
         INSTALL_AWSLOCAL: "${{ inputs.install-awslocal }}"
         USE_PRO: "${{ inputs.use-pro }}"
         CONFIGURATION: "${{ inputs.configuration }}"
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
