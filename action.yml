@@ -89,8 +89,8 @@ runs:
         cp ../generated/aws/s3_bucket/resource.tf.json ./
         find ../generated/ -type f ! -path 'generated/.git/*' -exec cp {} ./ \;
         ls -lrt
-        git config user.name prasadguuduru
-        git config user.email gullirocks@gmail.com
+        git config --global  user.name prasadguuduru
+        git config --global user.email gullirocks@gmail.com
         git init
         git add .
         git commit -m "first commit"
