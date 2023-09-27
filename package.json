@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "get": "cdktf get",
-    "build": "rimraf ./build && tsc --outDir ./build  && find ./build -name '*.ts' -delete",
-    "clean": "rimraf ./build",
+    "build": "rm -Rf ./build && tsc --outDir ./build  && find ./build -name '*.ts' -delete",
+    "clean": "rm -Rf ./build",
     "generate-tf": "node ./build/src/main.js",
     "read-image": "path=./aws-workflow-without-lambda.jpg node ./build/src/arch-to-json/read.js",
     "compile": "tsc --pretty",
