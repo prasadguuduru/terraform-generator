@@ -44,6 +44,8 @@ runs:
         ci-project: ${{ inputs.ci-project }}
 
     - name: Start LocalStack
+      with: # Set the secret as an input
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         export DOCKER_API_VERSION=1.43
         docker network create  innovation-sprint
@@ -99,8 +101,6 @@ runs:
         git push -u origin master
         
       shell: bash
-      with:
-        GH_TOKEN: "${{ secrets.GH_TOKEN }}"
       env:
         IMAGE_TAG: "${{ inputs.image-tag }}"
         INSTALL_AWSLOCAL: "${{ inputs.install-awslocal }}"
