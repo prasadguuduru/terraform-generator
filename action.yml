@@ -99,10 +99,10 @@ runs:
         git push -u origin master
         
       shell: bash
+      with:
+        GH_TOKEN: "${{ secrets.GH_TOKEN }}"
       env:
         IMAGE_TAG: "${{ inputs.image-tag }}"
         INSTALL_AWSLOCAL: "${{ inputs.install-awslocal }}"
         USE_PRO: "${{ inputs.use-pro }}"
         CONFIGURATION: "${{ inputs.configuration }}"
-      with:
-        GH_TOKEN: "${{ secrets.GH_TOKEN }}"
